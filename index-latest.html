@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e27;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.03) 2px,
+                    rgba(0, 255, 65, 0.03) 4px
+                );
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .digital-time {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ff41;
+            font-size: 32px;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+            letter-spacing: 6px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .date-display {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0f0;
+            font-size: 13px;
+            text-shadow: 0 0 5px #0f0;
+            letter-spacing: 2px;
+        }
+
+        .face {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(10, 14, 39, 0.8);
+            border: 3px solid #00ff41;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 65, 0.5),
+                inset 0 0 50px rgba(0, 255, 65, 0.1),
+                0 0 60px rgba(0, 255, 65, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .face::before {
+            content: '';
+            position: absolute;
+            width: 96%;
+            height: 96%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .face::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #00ff41;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ff41;
+            z-index: 100;
+        }
+
+        .v-index, .h-index {
+            position: absolute;
+            color: #00ff41;
+            font-size: 18px;
+            text-shadow: 0 0 10px #00ff41;
+            font-weight: bold;
+        }
+
+        .v-index {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .h-index {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hand {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hour {
+            position: absolute;
+            width: 5px;
+            height: 70px;
+            background: linear-gradient(180deg, #00ff41, rgba(0, 255, 65, 0.3));
+            border-radius: 3px;
+            left: 50%;
+            top: 50%;
+            transform-origin: center 100%;
+            transform: translate(-50%, -100%) rotate(0deg);
+            box-shadow: 0 0 15px #00ff41;
+            animation: hourRotate 43200s linear infinite;
+        }
+
+        @keyframes hourRotate {
+            0% { transform: translate(-50%, -100%) rotate(0deg); }
+            100% { transform: translate(-50%, -100%) rotate(360deg); }
+        }
+
+        .minute {
+            position: absolute;
+            width: 3px;
+            height: 100px;
+            background: linear-gradient(180deg, #0ff, rgba(0, 255, 255, 0.3));
+            border-radius: 2px;
+            left: 50%;
+            top: 50%;
+            transform-origin: center 100%;
+            transform: translate(-50%, -100%) rotate(0deg);
+            box-shadow: 0 0 15px #0ff;
+            animation: minuteRotate 3600s linear infinite;
+        }
+
+        @keyframes minuteRotate {
+            0% { transform: translate(-50%, -100%) rotate(0deg); }
+            100% { transform: translate(-50%, -100%) rotate(360deg); }
+        }
+
+        .second {
+            position: absolute;
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(180deg, #f0f, rgba(255, 0, 255, 0.3));
+            border-radius: 1px;
+            left: 50%;
+            top: 50%;
+            transform-origin: center 100%;
+            transform: translate(-50%, -100%) rotate(0deg);
+            box-shadow: 0 0 20px #f0f;
+            animation: secondRotate 60s linear infinite;
+        }
+
+        @keyframes secondRotate {
+            0% { transform: translate(-50%, -100%) rotate(0deg); }
+            100% { transform: translate(-50%, -100%) rotate(360deg); }
+        }
+
+        .tick {
+            position: absolute;
+            width: 1px;
+            height: 6px;
+            background: rgba(0, 255, 65, 0.5);
+            left: 50%;
+            top: 3px;
+            transform-origin: center 147px;
+        }
+
+        .tick.major {
+            width: 2px;
+            height: 10px;
+            background: rgba(0, 255, 65, 0.8);
+        }
+
+        .tick:nth-child(1) { transform: rotate(0deg) translateX(-50%); }
+        .tick:nth-child(2) { transform: rotate(6deg) translateX(-50%); }
+        .tick:nth-child(3) { transform: rotate(12deg) translateX(-50%); }
+        .tick:nth-child(4) { transform: rotate(18deg) translateX(-50%); }
+        .tick:nth-child(5) { transform: rotate(24deg) translateX(-50%); }
+        .tick:nth-child(6) { transform: rotate(30deg) translateX(-50%); }
+        .tick:nth-child(7) { transform: rotate(36deg) translateX(-50%); }
+        .tick:nth-child(8) { transform: rotate(42deg) translateX(-50%); }
+        .tick:nth-child(9) { transform: rotate(48deg) translateX(-50%); }
+        .tick:nth-child(10) { transform: rotate(54deg) translateX(-50%); }
+        .tick:nth-child(11) { transform: rotate(60deg) translateX(-50%); }
+        .tick:nth-child(12) { transform: rotate(66deg) translateX(-50%); }
+        .tick:nth-child(13) { transform: rotate(72deg) translateX(-50%); }
+        .tick:nth-child(14) { transform: rotate(78deg) translateX(-50%); }
+        .tick:nth-child(15) { transform: rotate(84deg) translateX(-50%); }
+        .tick:nth-child(16) { transform: rotate(90deg) translateX(-50%); }
+        .tick:nth-child(17) { transform: rotate(96deg) translateX(-50%); }
+        .tick:nth-child(18) { transform: rotate(102deg) translateX(-50%); }
+        .tick:nth-child(19) { transform: rotate(108deg) translateX(-50%); }
+        .tick:nth-child(20) { transform: rotate(114deg) translateX(-50%); }
+        .tick:nth-child(21) { transform: rotate(120deg) translateX(-50%); }
+        .tick:nth-child(22) { transform: rotate(126deg) translateX(-50%); }
+        .tick:nth-child(23) { transform: rotate(132deg) translateX(-50%); }
+        .tick:nth-child(24) { transform: rotate(138deg) translateX(-50%); }
+        .tick:nth-child(25) { transform: rotate(144deg) translateX(-50%); }
+        .tick:nth-child(26) { transform: rotate(150deg) translateX(-50%); }
+        .tick:nth-child(27) { transform: rotate(156deg) translateX(-50%); }
+        .tick:nth-child(28) { transform: rotate(162deg) translateX(-50%); }
+        .tick:nth-child(29) { transform: rotate(168deg) translateX(-50%); }
+        .tick:nth-child(30) { transform: rotate(174deg) translateX(-50%); }
+        .tick:nth-child(31) { transform: rotate(180deg) translateX(-50%); }
+        .tick:nth-child(32) { transform: rotate(186deg) translateX(-50%); }
+        .tick:nth-child(33) { transform: rotate(192deg) translateX(-50%); }
+        .tick:nth-child(34) { transform: rotate(198deg) translateX(-50%); }
+        .tick:nth-child(35) { transform: rotate(204deg) translateX(-50%); }
+        .tick:nth-child(36) { transform: rotate(210deg) translateX(-50%); }
+        .tick:nth-child(37) { transform: rotate(216deg) translateX(-50%); }
+        .tick:nth-child(38) { transform: rotate(222deg) translateX(-50%); }
+        .tick:nth-child(39) { transform: rotate(228deg) translateX(-50%); }
+        .tick:nth-child(40) { transform: rotate(234deg) translateX(-50%); }
+        .tick:nth-child(41) { transform: rotate(240deg) translateX(-50%); }
+        .tick:nth-child(42) { transform: rotate(246deg) translateX(-50%); }
+        .tick:nth-child(43) { transform: rotate(252deg) translateX(-50%); }
+        .tick:nth-child(44) { transform: rotate(258deg) translateX(-50%); }
+        .tick:nth-child(45) { transform: rotate(264deg) translateX(-50%); }
+        .tick:nth-child(46) { transform: rotate(270deg) translateX(-50%); }
+        .tick:nth-child(47) { transform: rotate(276deg) translateX(-50%); }
+        .tick:nth-child(48) { transform: rotate(282deg) translateX(-50%); }
+        .tick:nth-child(49) { transform: rotate(288deg) translateX(-50%); }
+        .tick:nth-child(50) { transform: rotate(294deg) translateX(-50%); }
+        .tick:nth-child(51) { transform: rotate(300deg) translateX(-50%); }
+        .tick:nth-child(52) { transform: rotate(306deg) translateX(-50%); }
+        .tick:nth-child(53) { transform: rotate(312deg) translateX(-50%); }
+        .tick:nth-child(54) { transform: rotate(318deg) translateX(-50%); }
+        .tick:nth-child(55) { transform: rotate(324deg) translateX(-50%); }
+        .tick:nth-child(56) { transform: rotate(330deg) translateX(-50%); }
+        .tick:nth-child(57) { transform: rotate(336deg) translateX(-50%); }
+        .tick:nth-child(58) { transform: rotate(342deg) translateX(-50%); }
+        .tick:nth-child(59) { transform: rotate(348deg) translateX(-50%); }
+        .tick:nth-child(60) { transform: rotate(354deg) translateX(-50%); }
+
+        .terminal {
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ff41;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .terminal-line {
+            color: #0f0;
+            font-size: 12px;
+            margin: 5px 0;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="digital-time">[HACKER:CLOCK]</div>
+        <div class="date-display">SYSTEM.TERMINAL.ACTIVE</div>
+        
+        <div class="face">
+            <p class="v-index">XII</p>
+            <p class="h-index">III</p>
+            
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            
+            <div class="hand">
+                <div class="hour"></div>
+            </div>
+            <div class="hand">
+                <div class="minute"></div>
+            </div>
+            <div class="hand">
+                <div class="second"></div>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line">> SYSTEM STATUS: <span style="color: #00ff41;">ONLINE</span></div>
+            <div class="terminal-line">> CLOCK SYNC: <span style="color: #00ff41;">ACTIVE</span></div>
+            <div class="terminal-line">> PROTOCOL: <span style="color: #0ff;">CSS-ONLY</span></div>
+            <div class="terminal-line">> <span class="cursor">_</span></div>
+        </div>
+    </div>
+</body>
+</html>
