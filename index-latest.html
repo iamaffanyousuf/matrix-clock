@@ -198,8 +198,8 @@
             height: 6px;
             background: rgba(0, 255, 65, 0.5);
             left: 50%;
-            top: 3px;
-            transform-origin: center 147px;
+            top: 10px;
+            transform-origin: 50% 140px;
         }
 
         .tick.major {
@@ -208,66 +208,73 @@
             background: rgba(0, 255, 65, 0.8);
         }
 
-        .tick:nth-child(1) { transform: rotate(0deg) translateX(-50%); }
-        .tick:nth-child(2) { transform: rotate(6deg) translateX(-50%); }
-        .tick:nth-child(3) { transform: rotate(12deg) translateX(-50%); }
-        .tick:nth-child(4) { transform: rotate(18deg) translateX(-50%); }
-        .tick:nth-child(5) { transform: rotate(24deg) translateX(-50%); }
-        .tick:nth-child(6) { transform: rotate(30deg) translateX(-50%); }
-        .tick:nth-child(7) { transform: rotate(36deg) translateX(-50%); }
-        .tick:nth-child(8) { transform: rotate(42deg) translateX(-50%); }
-        .tick:nth-child(9) { transform: rotate(48deg) translateX(-50%); }
-        .tick:nth-child(10) { transform: rotate(54deg) translateX(-50%); }
-        .tick:nth-child(11) { transform: rotate(60deg) translateX(-50%); }
-        .tick:nth-child(12) { transform: rotate(66deg) translateX(-50%); }
-        .tick:nth-child(13) { transform: rotate(72deg) translateX(-50%); }
-        .tick:nth-child(14) { transform: rotate(78deg) translateX(-50%); }
-        .tick:nth-child(15) { transform: rotate(84deg) translateX(-50%); }
-        .tick:nth-child(16) { transform: rotate(90deg) translateX(-50%); }
-        .tick:nth-child(17) { transform: rotate(96deg) translateX(-50%); }
-        .tick:nth-child(18) { transform: rotate(102deg) translateX(-50%); }
-        .tick:nth-child(19) { transform: rotate(108deg) translateX(-50%); }
-        .tick:nth-child(20) { transform: rotate(114deg) translateX(-50%); }
-        .tick:nth-child(21) { transform: rotate(120deg) translateX(-50%); }
-        .tick:nth-child(22) { transform: rotate(126deg) translateX(-50%); }
-        .tick:nth-child(23) { transform: rotate(132deg) translateX(-50%); }
-        .tick:nth-child(24) { transform: rotate(138deg) translateX(-50%); }
-        .tick:nth-child(25) { transform: rotate(144deg) translateX(-50%); }
-        .tick:nth-child(26) { transform: rotate(150deg) translateX(-50%); }
-        .tick:nth-child(27) { transform: rotate(156deg) translateX(-50%); }
-        .tick:nth-child(28) { transform: rotate(162deg) translateX(-50%); }
-        .tick:nth-child(29) { transform: rotate(168deg) translateX(-50%); }
-        .tick:nth-child(30) { transform: rotate(174deg) translateX(-50%); }
-        .tick:nth-child(31) { transform: rotate(180deg) translateX(-50%); }
-        .tick:nth-child(32) { transform: rotate(186deg) translateX(-50%); }
-        .tick:nth-child(33) { transform: rotate(192deg) translateX(-50%); }
-        .tick:nth-child(34) { transform: rotate(198deg) translateX(-50%); }
-        .tick:nth-child(35) { transform: rotate(204deg) translateX(-50%); }
-        .tick:nth-child(36) { transform: rotate(210deg) translateX(-50%); }
-        .tick:nth-child(37) { transform: rotate(216deg) translateX(-50%); }
-        .tick:nth-child(38) { transform: rotate(222deg) translateX(-50%); }
-        .tick:nth-child(39) { transform: rotate(228deg) translateX(-50%); }
-        .tick:nth-child(40) { transform: rotate(234deg) translateX(-50%); }
-        .tick:nth-child(41) { transform: rotate(240deg) translateX(-50%); }
-        .tick:nth-child(42) { transform: rotate(246deg) translateX(-50%); }
-        .tick:nth-child(43) { transform: rotate(252deg) translateX(-50%); }
-        .tick:nth-child(44) { transform: rotate(258deg) translateX(-50%); }
-        .tick:nth-child(45) { transform: rotate(264deg) translateX(-50%); }
-        .tick:nth-child(46) { transform: rotate(270deg) translateX(-50%); }
-        .tick:nth-child(47) { transform: rotate(276deg) translateX(-50%); }
-        .tick:nth-child(48) { transform: rotate(282deg) translateX(-50%); }
-        .tick:nth-child(49) { transform: rotate(288deg) translateX(-50%); }
-        .tick:nth-child(50) { transform: rotate(294deg) translateX(-50%); }
-        .tick:nth-child(51) { transform: rotate(300deg) translateX(-50%); }
-        .tick:nth-child(52) { transform: rotate(306deg) translateX(-50%); }
-        .tick:nth-child(53) { transform: rotate(312deg) translateX(-50%); }
-        .tick:nth-child(54) { transform: rotate(318deg) translateX(-50%); }
-        .tick:nth-child(55) { transform: rotate(324deg) translateX(-50%); }
-        .tick:nth-child(56) { transform: rotate(330deg) translateX(-50%); }
-        .tick:nth-child(57) { transform: rotate(336deg) translateX(-50%); }
-        .tick:nth-child(58) { transform: rotate(342deg) translateX(-50%); }
-        .tick:nth-child(59) { transform: rotate(348deg) translateX(-50%); }
-        .tick:nth-child(60) { transform: rotate(354deg) translateX(-50%); }
+        .tick:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+        .tick:nth-child(2) { transform: translateX(-50%) rotate(6deg); }
+        .tick:nth-child(3) { transform: translateX(-50%) rotate(12deg); }
+        .tick:nth-child(4) { transform: translateX(-50%) rotate(18deg); }
+        .tick:nth-child(5) { transform: translateX(-50%) rotate(24deg); }
+        .tick:nth-child(6) { transform: translateX(-50%) rotate(30deg); }
+        .tick:nth-child(7) { transform: translateX(-50%) rotate(36deg); }
+        .tick:nth-child(8) { transform: translateX(-50%) rotate(42deg); }
+        .tick:nth-child(9) { transform: translateX(-50%) rotate(48deg); }
+        .tick:nth-child(10) { transform: translateX(-50%) rotate(54deg); }
+        .tick:nth-child(11) { transform: translateX(-50%) rotate(60deg); }
+        .tick:nth-child(12) { transform: translateX(-50%) rotate(66deg); }
+        .tick:nth-child(13) { transform: translateX(-50%) rotate(72deg); }
+        .tick:nth-child(14) { transform: translateX(-50%) rotate(78deg); }
+        .tick:nth-child(15) { transform: translateX(-50%) rotate(84deg); }
+        .tick:nth-child(16) { transform: translateX(-50%) rotate(90deg); }
+        .tick:nth-child(17) { transform: translateX(-50%) rotate(96deg); }
+        .tick:nth-child(18) { transform: translateX(-50%) rotate(102deg); }
+        .tick:nth-child(19) { transform: translateX(-50%) rotate(108deg); }
+        .tick:nth-child(20) { transform: translateX(-50%) rotate(114deg); }
+        .tick:nth-child(21) { transform: translateX(-50%) rotate(120deg); }
+        .tick:nth-child(22) { transform: translateX(-50%) rotate(126deg); }
+        .tick:nth-child(23) { transform: translateX(-50%) rotate(132deg); }
+        .tick:nth-child(24) { transform: translateX(-50%) rotate(138deg); }
+        .tick:nth-child(25) { transform: translateX(-50%) rotate(144deg); }
+        .tick:nth-child(26) { transform: translateX(-50%) rotate(150deg); }
+        .tick:nth-child(27) { transform: translateX(-50%) rotate(156deg); }
+        .tick:nth-child(28) { transform: translateX(-50%) rotate(162deg); }
+        .tick:nth-child(29) { transform: translateX(-50%) rotate(168deg); }
+        .tick:nth-child(30) { transform: translateX(-50%) rotate(174deg); }
+        .tick:nth-child(31) { transform: translateX(-50%) rotate(180deg); }
+        .tick:nth-child(32) { transform: translateX(-50%) rotate(186deg); }
+        .tick:nth-child(33) { transform: translateX(-50%) rotate(192deg); }
+        .tick:nth-child(34) { transform: translateX(-50%) rotate(198deg); }
+        .tick:nth-child(35) { transform: translateX(-50%) rotate(204deg); }
+        .tick:nth-child(36) { transform: translateX(-50%) rotate(210deg); }
+        .tick:nth-child(37) { transform: translateX(-50%) rotate(216deg); }
+        .tick:nth-child(38) { transform: translateX(-50%) rotate(222deg); }
+        .tick:nth-child(39) { transform: translateX(-50%) rotate(228deg); }
+        .tick:nth-child(40) { transform: translateX(-50%) rotate(234deg); }
+        .tick:nth-child(41) { transform: translateX(-50%) rotate(240deg); }
+        .tick:nth-child(42) { transform: translateX(-50%) rotate(246deg); }
+        .tick:nth-child(43) { transform: translateX(-50%) rotate(252deg); }
+        .tick:nth-child(44) { transform: translateX(-50%) rotate(258deg); }
+        .tick:nth-child(45) { transform: translateX(-50%) rotate(264deg); }
+        .tick:nth-child(46) { transform: translateX(-50%) rotate(270deg); }
+        .tick:nth-child(47) { transform: translateX(-50%) rotate(276deg); }
+        .tick:nth-child(48) { transform: translateX(-50%) rotate(282deg); }
+        .tick:nth-child(49) { transform: translateX(-50%) rotate(288deg); }
+        .tick:nth-child(50) { transform: translateX(-50%) rotate(294deg); }
+        .tick:nth-child(51) { transform: translateX(-50%) rotate(300deg); }
+        .tick:nth-child(52) { transform: translateX(-50%) rotate(306deg); }
+        .tick:nth-child(53) { transform: translateX(-50%) rotate(312deg); }
+        .tick:nth-child(54) { transform: translateX(-50%) rotate(318deg); }
+        .tick:nth-child(55) { transform: translateX(-50%) rotate(324deg); }
+        .tick:nth-child(56) { transform: translateX(-50%) rotate(330deg); }
+        .tick:nth-child(57) { transform: translateX(-50%) rotate(336deg); }
+        .tick:nth-child(58) { transform: translateX(-50%) rotate(342deg); }
+        .tick:nth-child(59) { transform: translateX(-50%) rotate(348deg); }
+        .tick:nth-child(60) { transform: translateX(-50%) rotate(354deg); }
+
+        /* Make every 5th tick major (hour markers at 12, 1, 2, etc.) */
+        .tick:nth-child(5n+1) {
+            width: 2px;
+            height: 10px;
+            background: rgba(0, 255, 65, 0.8);
+        }
 
         .terminal {
             margin-top: 30px;
@@ -304,62 +311,62 @@
             <p class="v-index">XII</p>
             <p class="h-index">III</p>
             
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
-            <div class="tick major"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
             <div class="tick"></div>
