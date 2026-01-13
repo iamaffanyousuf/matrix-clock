@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hacker Clock</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="face">
+            <p class="v-index">XII</p>
+            <p class="h-index">III</p>
+            <p class="b-index">IV</p>
+            <p class="s-index">IX</p>
+
+            <div id="ticks"></div>
+
+            <div class="hand" id="hourHand">
+                <div class="hour"></div>
+            </div>
+            <div class="hand" id="minuteHand">
+                <div class="minute"></div>
+            </div>
+            <div class="hand" id="secondHand">
+                <div class="second"></div>
+            </div>
+
+            <div class="center">
+                <div class="digital-time" id="digitalTime">00:00:00</div>
+                <div class="date-display" id="dateDisplay">SYSTEM.DATE</div>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line">> SYSTEM STATUS: <span style="color: #00ff41;">ONLINE</span></div>
+            <div class="terminal-line">> CLOCK SYNC: <span style="color: #00ff41;">ACTIVE</span></div>
+            <div class="terminal-line">> UPTIME: <span id="uptime">00:00:00</span></div>
+            <div class="terminal-line">> <span class="cursor">_</span></div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
